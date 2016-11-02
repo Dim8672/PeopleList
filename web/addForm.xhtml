@@ -12,17 +12,20 @@
             </ui:define>
             <ui:define name="content">
                 <h:form>
-                    #{prop.gender} :<h:inputText title="gender" value="#{personBean.gender}" required="true" requiredMessage="#{prop.genderRequired}"><br/>
-                    #{prop.firstName} :<h:inputText value="#{personBean.firstName}" required="true" requiredMessage="#{prop.firstnameRequired}"/><br/>
-                    #{prop.lastName} :<h:inputText value="#{personBean.lastName}" required="true" requiredMessage="#{prop.lastNameRequired}"/><br/>
-                    #{prop.married} :<h:selectOneRadio value="#{personBean.married}" ><br/>
-                        <f:selectItem itemLabel="Yes" itemValue="True"/> <!-- l'itemValue est la valeur que va prendre personBean.married -->
-                        <f:selectItem itemLabel="No" itemValue="False"/>
-                    </h:selectOneRadio>
-                    #{prop.birthDate} :<h:inputText value="#{personBean.birthDate}" required="true" requiredMessage="#{prop.birthDateRequired}">
-                        <f:convertDateTime pattern="dd.MM.yyyy"/>
-                    </h:inputText><br/>
-                    <h:commandButton value="Add" action="#{personBean.addPerson()}"/>  
+                    #{prop.gender} :<h:inputText title="gender" value="#{personBean.gender}" required="true" requiredMessage="#{prop.genderRequired}"/><br/>
+                        #{prop.firstName} :<h:inputText value="#{personBean.firstName}" required="true" requiredMessage="#{prop.firstnameRequired}">
+                            <f:validator validatorId="personValidator" /></h:inputText><br/>
+                        #{prop.lastName} :<h:inputText value="#{personBean.lastName}" required="true" requiredMessage="#{prop.lastNameRequired}">
+                            <f:validator validatorId="personValidator" /></h:inputText><br/>
+                        #{prop.married} :<h:selectOneRadio value="#{personBean.married}" ><br/>
+                            <f:selectItem itemLabel="Yes" itemValue="True"/> <!-- l'itemValue est la valeur que va prendre personBean.married -->
+                            <f:selectItem itemLabel="No" itemValue="False"/>
+                        </h:selectOneRadio>
+                        #{prop.birthDate} :<h:inputText value="#{personBean.birthDate}" required="true" requiredMessage="#{prop.birthDateRequired}">
+                            <f:validator validatorId="personValidator" />
+                            <f:convertDateTime pattern="dd.MM.yyyy"/>
+                        </h:inputText><br/>
+                        <h:commandButton value="Add" action="#{personBean.addPerson()}"/>  
                 </h:form>
             </ui:define>
         </ui:composition>

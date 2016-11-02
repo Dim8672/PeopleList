@@ -136,4 +136,20 @@ public class Services implements Serializable{
         return new ArrayList(people.values());
     }
     
+    public boolean matcher(String value){
+        
+         for (Map.Entry<Long, Person> person : people.entrySet()) {
+             if(person.getValue().getFirstName().equals(value)){
+                 return true;
+             }
+             if(person.getValue().getLastName().equals(value)){
+                 return true;
+             }
+             if(person.getValue().getBirthDate().toString().equals(value)){
+                 return true;
+             }
+         }
+         return false;
+    }
+    
 }
